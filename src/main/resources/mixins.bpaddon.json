@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "uthw.bpaddon.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "bpaddon.refmap.json",
+  "plugin": "uthw.bpaddon.mixin.BPAddonMixinPlugin",
+  "mixins": [
+    "MixinCalculateStaminaUtils",
+    "MixinCalculateStaminaUtilsShield",
+    "MixinMessageWallJump"
+  ],
+  "client": [
+    "MixinWallJumpLogic"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

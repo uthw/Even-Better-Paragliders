@@ -16,11 +16,13 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
 import uthw.bpaddon.config.BPAddonConfig;
+import uthw.bpaddon.integration.CelestisynthMemLeakFix;
 import uthw.bpaddon.integration.CombatRollIntegration;
 
 @Mod("bpaddon")
 public class BPAddonMain {
     public static final Logger LOGGER = LogUtils.getLogger();
+
     public BPAddonMain() {
         // Common config
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, BPAddonConfig.SPEC);
@@ -30,6 +32,14 @@ public class BPAddonMain {
         modEventBus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
+
+        // Load celestisynth fix if the mod is enabled
+        if (ModList.get().isLoaded("celestisynth")) {
+            MinecraftForge.EVENT_BUS.register(new CelestisynthMemLeakFix());
+            LOGGER.info("Celestisynth detected, loading memory leak fix...");
+        } else {
+            LOGGER.info("Celestisynth not detected, not loading memory leak fix.");
+        }
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

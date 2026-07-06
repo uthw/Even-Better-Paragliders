@@ -11,6 +11,8 @@ public class BPAddonConfig {
 
     public static final ForgeConfigSpec.DoubleValue WALL_JUMP_COST;
 
+    public static final ForgeConfigSpec.DoubleValue DODGE_ROLL_COST;
+
     private static ForgeConfigSpec.DoubleValue DEFAULT_BASE_COST;
     private static ForgeConfigSpec.DoubleValue HAMMER_COST;
     private static ForgeConfigSpec.DoubleValue ANCHOR_COST;
@@ -121,6 +123,8 @@ public class BPAddonConfig {
 
     public static double wallJumpCost() { return (Double)WALL_JUMP_COST.get(); }
 
+    public static double dodgeRollCost() {  return (Double)DODGE_ROLL_COST.get(); }
+
     public static double thrownWeaponCost() { return (Double)THROWN_WEAPON_COST.get(); }
 
     static {
@@ -182,6 +186,11 @@ public class BPAddonConfig {
         BUILDER.push("Wall Jump Cost");
         WALL_JUMP_COST = BUILDER.comment("The stamina cost for performing a wall jump. Using a value of 0 will disable this integration.")
                 .defineInRange("wall_jump_cost", 20.0, 0.0, 999.0);
+
+        BUILDER.push("Dodge Roll Cost");
+        DODGE_ROLL_COST = BUILDER.comment("The stamina cost for performing a dodge roll using the Combat Roll mod. Using a value of 0 will disable this integration.")
+                .comment("If you use this feature, consider lowering the cooldown in Combat Roll's server config so stamina becomes the main limiting factor.")
+                .defineInRange("dodge_roll_cost", 30.0, 0.0, 999.0);
 
         SPEC = BUILDER.build();
     }

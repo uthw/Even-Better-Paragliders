@@ -11,7 +11,8 @@
     "MixinMessageWallJump"
   ],
   "client": [
-    "MixinWallJumpLogic"
+    "MixinWallJumpLogic",
+    "MixinRollManager"
   ],
   "injectors": {
     "defaultRequire": 1

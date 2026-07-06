@@ -32,6 +32,11 @@ public class BPAddonMixinPlugin implements IMixinConfigPlugin {
             return LoadingModList.get().getModFileById("shieldexp") != null;
         }
 
+        // Only load the combat roll mixin if combat roll is enabled
+        if (mixinClassName.contains("MixinRollManager")) {
+            return LoadingModList.get().getModFileById("combatroll") != null;
+        }
+
         return true;
     }
 

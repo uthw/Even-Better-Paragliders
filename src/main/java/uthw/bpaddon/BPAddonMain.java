@@ -7,6 +7,7 @@ import net.minecraft.world.item.TridentItem;
 import net.minecraft.world.item.UseAnim;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -15,6 +16,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
 import uthw.bpaddon.config.BPAddonConfig;
+import uthw.bpaddon.integration.CombatRollIntegration;
 
 @Mod("bpaddon")
 public class BPAddonMain {
@@ -43,6 +45,11 @@ public class BPAddonMain {
                 } catch (Exception e) {
 
                 }
+            }
+
+            // Load combat roll integration if the mod is installed
+            if (ModList.get().isLoaded("combatroll")) {
+                CombatRollIntegration.register();
             }
         });
     }

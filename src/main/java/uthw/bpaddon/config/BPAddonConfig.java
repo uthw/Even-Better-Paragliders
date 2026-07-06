@@ -13,121 +13,124 @@ public class BPAddonConfig {
 
     public static final ForgeConfigSpec.DoubleValue DODGE_ROLL_COST;
 
-    private static ForgeConfigSpec.DoubleValue DEFAULT_BASE_COST;
-    private static ForgeConfigSpec.DoubleValue HAMMER_COST;
-    private static ForgeConfigSpec.DoubleValue ANCHOR_COST;
-    private static ForgeConfigSpec.DoubleValue CLAYMORE_COST;
-    private static ForgeConfigSpec.DoubleValue DOUBLE_AXE_COST;
-    private static ForgeConfigSpec.DoubleValue HALBERD_COST;
-    private static ForgeConfigSpec.DoubleValue LANCE_COST;
-    private static ForgeConfigSpec.DoubleValue GLAIVE_COST;
-    private static ForgeConfigSpec.DoubleValue SCYTHE_COST;
-    private static ForgeConfigSpec.DoubleValue AXE_COST;
-    private static ForgeConfigSpec.DoubleValue MACE_COST;
-    private static ForgeConfigSpec.DoubleValue TRIDENT_COST;
-    private static ForgeConfigSpec.DoubleValue SPEAR_COST;
-    private static ForgeConfigSpec.DoubleValue SWORD_COST;
-    private static ForgeConfigSpec.DoubleValue CORAL_BLADE_COST;
-    private static ForgeConfigSpec.DoubleValue CUTLASS_COST;
-    private static ForgeConfigSpec.DoubleValue TWIN_BLADE_COST;
-    private static ForgeConfigSpec.DoubleValue BATTLESTAFF_COST;
-    private static ForgeConfigSpec.DoubleValue KATANA_COST;
-    private static ForgeConfigSpec.DoubleValue RAPIER_COST;
-    private static ForgeConfigSpec.DoubleValue WAND_COST;
-    private static ForgeConfigSpec.DoubleValue SICKLE_COST;
-    private static ForgeConfigSpec.DoubleValue CLAW_COST;
-    private static ForgeConfigSpec.DoubleValue DAGGER_COST;
-    private static ForgeConfigSpec.DoubleValue SOUL_KNIFE_COST;
-    private static ForgeConfigSpec.DoubleValue FIST_COST;
+    private static final ForgeConfigSpec.DoubleValue DEFAULT_BASE_COST;
+    private static final ForgeConfigSpec.DoubleValue HAMMER_COST;
+    private static final ForgeConfigSpec.DoubleValue ANCHOR_COST;
+    private static final ForgeConfigSpec.DoubleValue CLAYMORE_COST;
+    private static final ForgeConfigSpec.DoubleValue DOUBLE_AXE_COST;
+    private static final ForgeConfigSpec.DoubleValue HALBERD_COST;
+    private static final ForgeConfigSpec.DoubleValue LANCE_COST;
+    private static final ForgeConfigSpec.DoubleValue GLAIVE_COST;
+    private static final ForgeConfigSpec.DoubleValue SCYTHE_COST;
+    private static final ForgeConfigSpec.DoubleValue AXE_COST;
+    private static final ForgeConfigSpec.DoubleValue MACE_COST;
+    private static final ForgeConfigSpec.DoubleValue TRIDENT_COST;
+    private static final ForgeConfigSpec.DoubleValue SPEAR_COST;
+    private static final ForgeConfigSpec.DoubleValue SWORD_COST;
+    private static final ForgeConfigSpec.DoubleValue CORAL_BLADE_COST;
+    private static final ForgeConfigSpec.DoubleValue CUTLASS_COST;
+    private static final ForgeConfigSpec.DoubleValue TWIN_BLADE_COST;
+    private static final ForgeConfigSpec.DoubleValue BATTLESTAFF_COST;
+    private static final ForgeConfigSpec.DoubleValue KATANA_COST;
+    private static final ForgeConfigSpec.DoubleValue RAPIER_COST;
+    private static final ForgeConfigSpec.DoubleValue WAND_COST;
+    private static final ForgeConfigSpec.DoubleValue SICKLE_COST;
+    private static final ForgeConfigSpec.DoubleValue CLAW_COST;
+    private static final ForgeConfigSpec.DoubleValue DAGGER_COST;
+    private static final ForgeConfigSpec.DoubleValue SOUL_KNIFE_COST;
+    private static final ForgeConfigSpec.DoubleValue FIST_COST;
 
-    private static ForgeConfigSpec.DoubleValue THROWN_WEAPON_COST;
+    private static final ForgeConfigSpec.DoubleValue THROWN_WEAPON_COST;
 
     public static double defaultBaseCost() {
-        return (Double)DEFAULT_BASE_COST.get();
+        return DEFAULT_BASE_COST.get();
     }
     public static double hammerCost() {
-        return (Double)HAMMER_COST.get();
+        return HAMMER_COST.get();
     }
     public static double anchorCost() {
-        return (Double)ANCHOR_COST.get();
+        return ANCHOR_COST.get();
     }
     public static double claymoreCost() {
-        return (Double)CLAYMORE_COST.get();
+        return CLAYMORE_COST.get();
     }
     public static double doubleAxeCost() {
-        return (Double)DOUBLE_AXE_COST.get();
+        return DOUBLE_AXE_COST.get();
     }
     public static double halberdCost() {
-        return (Double)HALBERD_COST.get();
+        return HALBERD_COST.get();
     }
     public static double lanceCost() {
-        return (Double)LANCE_COST.get();
+        return LANCE_COST.get();
     }
     public static double glaiveCost() {
-        return (Double)GLAIVE_COST.get();
+        return GLAIVE_COST.get();
     }
     public static double scytheCost() {
-        return (Double)SCYTHE_COST.get();
+        return SCYTHE_COST.get();
     }
     public static double axeCost() {
-        return (Double)AXE_COST.get();
+        return AXE_COST.get();
     }
     public static double maceCost() {
-        return (Double)MACE_COST.get();
+        return MACE_COST.get();
     }
     public static double tridentCost() {
-        return (Double)TRIDENT_COST.get();
+        return TRIDENT_COST.get();
     }
     public static double spearCost() {
-        return (Double)SPEAR_COST.get();
+        return SPEAR_COST.get();
     }
     public static double swordCost() {
-        return (Double)SWORD_COST.get();
+        return SWORD_COST.get();
     }
     public static double coralBladeCost() {
-        return (Double)CORAL_BLADE_COST.get();
+        return CORAL_BLADE_COST.get();
     }
     public static double cutlassCost() {
-        return (Double)CUTLASS_COST.get();
+        return CUTLASS_COST.get();
     }
     public static double twinBladeCost() {
-        return (Double)TWIN_BLADE_COST.get();
+        return TWIN_BLADE_COST.get();
     }
     public static double battlestaffCost() {
-        return (Double)BATTLESTAFF_COST.get();
+        return BATTLESTAFF_COST.get();
     }
     public static double katanaCost() {
-        return (Double)KATANA_COST.get();
+        return KATANA_COST.get();
     }
     public static double rapierCost() {
-        return (Double)RAPIER_COST.get();
+        return RAPIER_COST.get();
     }
     public static double wandCost() {
-        return (Double)WAND_COST.get();
+        return WAND_COST.get();
     }
     public static double sickleCost() {
-        return (Double)SICKLE_COST.get();
+        return SICKLE_COST.get();
     }
     public static double clawCost() {
-        return (Double)CLAW_COST.get();
+        return CLAW_COST.get();
     }
     public static double daggerCost() {
-        return (Double)DAGGER_COST.get();
+        return DAGGER_COST.get();
     }
     public static double soulKnifeCost() {
-        return (Double)SOUL_KNIFE_COST.get();
+        return SOUL_KNIFE_COST.get();
     }
     public static double fistCost() {
-        return (Double)FIST_COST.get();
+        return FIST_COST.get();
     }
 
-    public static double wallJumpCost() { return (Double)WALL_JUMP_COST.get(); }
+    public static double wallJumpCost() { return WALL_JUMP_COST.get(); }
 
-    public static double dodgeRollCost() {  return (Double)DODGE_ROLL_COST.get(); }
+    public static double dodgeRollCost() {  return DODGE_ROLL_COST.get(); }
 
-    public static double thrownWeaponCost() { return (Double)THROWN_WEAPON_COST.get(); }
+    public static double thrownWeaponCost() { return THROWN_WEAPON_COST.get(); }
 
     static {
+        BUILDER.comment("Due to how Better Paragliders calculates stamina costs, the numbers you enter in this file will not match up with with the numbers in Paragliders's server config.",
+                "The actual cost will be n(n+1)/2, where n is the value you enter in this config. Note that this formula grows exponentially.",
+                "For example, if you set a cost to 31, the actual value will be 496, which by default is roughly half your stamina wheel.");
         BUILDER.push("General Settings");
         ENABLE_WEAPON_OVERRIDE = BUILDER
                 .comment("If true, attack stamina costs for the Better Paragliders mod are calculated by the weapon type values below.",
@@ -169,9 +172,9 @@ public class BPAddonConfig {
         WAND_COST = BUILDER.defineInRange("wand_cost", 1.5, 0.0, 999.0);
         SICKLE_COST = BUILDER.defineInRange("sickle_cost", 1.0, 0.0, 999.0);
         CLAW_COST = BUILDER.defineInRange("claw_cost", 1.0, 0.0, 999.0);
-        DAGGER_COST = BUILDER.defineInRange("dagger_cost", 0.8, 0.0, 999.0);
-        SOUL_KNIFE_COST = BUILDER.defineInRange("soul_knife_cost", 0.8, 0.0, 999.0);
-        FIST_COST = BUILDER.defineInRange("fist_cost", 0.5, 0.0, 999.0);
+        DAGGER_COST = BUILDER.defineInRange("dagger_cost", 1.0, 0.0, 999.0);
+        SOUL_KNIFE_COST = BUILDER.defineInRange("soul_knife_cost", 1.0, 0.0, 999.0);
+        FIST_COST = BUILDER.defineInRange("fist_cost", 1.0, 0.0, 999.0);
 
         BUILDER.pop();
 
@@ -183,12 +186,14 @@ public class BPAddonConfig {
 
         BUILDER.pop();
 
-        BUILDER.push("Wall Jump Cost");
+        BUILDER.push("Wall-Jump Integration");
         WALL_JUMP_COST = BUILDER.comment("The stamina cost for performing a wall jump. Using a value of 0 will disable this integration.")
                 .defineInRange("wall_jump_cost", 20.0, 0.0, 999.0);
 
-        BUILDER.push("Dodge Roll Cost");
-        DODGE_ROLL_COST = BUILDER.comment("The stamina cost for performing a dodge roll using the Combat Roll mod. Using a value of 0 will disable this integration.")
+        BUILDER.pop();
+
+        BUILDER.push("Combat Roll Integration");
+        DODGE_ROLL_COST = BUILDER.comment("The stamina cost for performing a dodge roll. Using a value of 0 will disable this integration.")
                 .comment("If you use this feature, consider lowering the cooldown in Combat Roll's server config so stamina becomes the main limiting factor.")
                 .defineInRange("dodge_roll_cost", 30.0, 0.0, 999.0);
 

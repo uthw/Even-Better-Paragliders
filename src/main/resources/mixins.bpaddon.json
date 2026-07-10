@@ -6,13 +6,14 @@
   "refmap": "bpaddon.refmap.json",
   "plugin": "uthw.bpaddon.mixin.BPAddonMixinPlugin",
   "mixins": [
+    "MixinBPBotWStamina",
     "MixinCalculateStaminaUtils",
     "MixinCalculateStaminaUtilsShield",
     "MixinMessageWallJump"
   ],
   "client": [
-    "MixinWallJumpLogic",
-    "MixinRollManager"
+    "MixinRollManager",
+    "MixinWallJumpLogic"
   ],
   "injectors": {
     "defaultRequire": 1

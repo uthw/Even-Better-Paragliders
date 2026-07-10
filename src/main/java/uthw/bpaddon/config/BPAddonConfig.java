@@ -8,6 +8,7 @@ public class BPAddonConfig {
 
     public static final ForgeConfigSpec.BooleanValue ENABLE_WEAPON_OVERRIDE;
     public static final ForgeConfigSpec.BooleanValue PARRIES_COST_ZERO_STAMINA;
+    public static final ForgeConfigSpec.IntValue STAMINA_RECOVERY_DELAY;
 
     public static final ForgeConfigSpec.DoubleValue WALL_JUMP_COST;
 
@@ -42,90 +43,125 @@ public class BPAddonConfig {
 
     private static final ForgeConfigSpec.DoubleValue THROWN_WEAPON_COST;
 
+    public static int staminaRecoveryDelay() {
+        return STAMINA_RECOVERY_DELAY.get();
+    }
+
     public static double defaultBaseCost() {
         return DEFAULT_BASE_COST.get();
     }
+
     public static double hammerCost() {
         return HAMMER_COST.get();
     }
+
     public static double anchorCost() {
         return ANCHOR_COST.get();
     }
+
     public static double claymoreCost() {
         return CLAYMORE_COST.get();
     }
+
     public static double doubleAxeCost() {
         return DOUBLE_AXE_COST.get();
     }
+
     public static double halberdCost() {
         return HALBERD_COST.get();
     }
+
     public static double lanceCost() {
         return LANCE_COST.get();
     }
+
     public static double glaiveCost() {
         return GLAIVE_COST.get();
     }
+
     public static double scytheCost() {
         return SCYTHE_COST.get();
     }
+
     public static double axeCost() {
         return AXE_COST.get();
     }
+
     public static double maceCost() {
         return MACE_COST.get();
     }
+
     public static double tridentCost() {
         return TRIDENT_COST.get();
     }
+
     public static double spearCost() {
         return SPEAR_COST.get();
     }
+
     public static double swordCost() {
         return SWORD_COST.get();
     }
+
     public static double coralBladeCost() {
         return CORAL_BLADE_COST.get();
     }
+
     public static double cutlassCost() {
         return CUTLASS_COST.get();
     }
+
     public static double twinBladeCost() {
         return TWIN_BLADE_COST.get();
     }
+
     public static double battlestaffCost() {
         return BATTLESTAFF_COST.get();
     }
+
     public static double katanaCost() {
         return KATANA_COST.get();
     }
+
     public static double rapierCost() {
         return RAPIER_COST.get();
     }
+
     public static double wandCost() {
         return WAND_COST.get();
     }
+
     public static double sickleCost() {
         return SICKLE_COST.get();
     }
+
     public static double clawCost() {
         return CLAW_COST.get();
     }
+
     public static double daggerCost() {
         return DAGGER_COST.get();
     }
+
     public static double soulKnifeCost() {
         return SOUL_KNIFE_COST.get();
     }
+
     public static double fistCost() {
         return FIST_COST.get();
     }
 
-    public static double wallJumpCost() { return WALL_JUMP_COST.get(); }
+    public static double wallJumpCost() {
+        return WALL_JUMP_COST.get();
+    }
 
-    public static double dodgeRollCost() {  return DODGE_ROLL_COST.get(); }
+    public static double dodgeRollCost() {
+        return DODGE_ROLL_COST.get();
+    }
 
-    public static double thrownWeaponCost() { return THROWN_WEAPON_COST.get(); }
+    public static double thrownWeaponCost() {
+        return THROWN_WEAPON_COST.get();
+    }
 
     static {
         BUILDER.comment("Due to how Better Paragliders calculates stamina costs, the numbers you enter in this file will not match up with with the numbers in Paragliders's server config.",
@@ -140,6 +176,11 @@ public class BPAddonConfig {
         PARRIES_COST_ZERO_STAMINA = BUILDER
                 .comment("If true, Shield Expansion parries do not cost stamina.")
                 .define("parries_cost_zero_stamina", true);
+
+        STAMINA_RECOVERY_DELAY = BUILDER
+                .comment("How long it takes for stamina to begin regenerating after a Better Combat attack, in ticks.",
+                        "This value is hardcoded at 10 ticks in base Better Paragliders.")
+                .defineInRange("stamina_recovery_delay", 10, 0, 999);
 
         BUILDER.pop();
 

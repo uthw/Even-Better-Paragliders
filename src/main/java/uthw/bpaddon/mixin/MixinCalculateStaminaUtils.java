@@ -13,12 +13,16 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import tictim.paraglider.api.movement.Movement;
+import tictim.paraglider.impl.movement.PlayerMovement;
+import uthw.bpaddon.BPAddonMain;
 import uthw.bpaddon.config.BPAddonConfig;
 
 @Mixin(CalculateStaminaUtils.class)
 public class MixinCalculateStaminaUtils {
     /**
      * Overrides stamina consumption for melee weapons to make it based on the Better Combat weapon type instead of attack damage.
+     *
      * @param player
      * @param currentCombo
      * @param cir
@@ -45,32 +49,83 @@ public class MixinCalculateStaminaUtils {
             // Use config for stamina cost by weapon type
             double baseCost = BPAddonConfig.defaultBaseCost();
             switch (category) {
-                case "hammer": baseCost = BPAddonConfig.hammerCost(); break;
-                case "anchor": baseCost = BPAddonConfig.anchorCost(); break;
-                case "claymore": baseCost = BPAddonConfig.claymoreCost(); break;
-                case "double_axe": baseCost = BPAddonConfig.doubleAxeCost(); break;
-                case "halberd": baseCost = BPAddonConfig.halberdCost(); break;
-                case "lance": baseCost = BPAddonConfig.lanceCost(); break;
-                case "glaive": baseCost = BPAddonConfig.glaiveCost(); break;
-                case "scythe": baseCost = BPAddonConfig.scytheCost(); break;
-                case "axe": baseCost = BPAddonConfig.axeCost(); break;
-                case "mace": baseCost = BPAddonConfig.maceCost(); break;
-                case "trident": baseCost = BPAddonConfig.tridentCost(); break;
-                case "spear": baseCost = BPAddonConfig.spearCost(); break;
-                case "sword": baseCost = BPAddonConfig.swordCost(); break;
-                case "coral_blade": baseCost = BPAddonConfig.coralBladeCost(); break;
-                case "cutlass": baseCost = BPAddonConfig.cutlassCost(); break;
-                case "twin_blade": baseCost = BPAddonConfig.twinBladeCost(); break;
-                case "battlestaff": baseCost = BPAddonConfig.battlestaffCost(); break;
-                case "katana": baseCost = BPAddonConfig.katanaCost(); break;
-                case "rapier": baseCost = BPAddonConfig.rapierCost(); break;
-                case "wand": baseCost = BPAddonConfig.wandCost(); break;
-                case "sickle": baseCost = BPAddonConfig.sickleCost(); break;
-                case "claw": baseCost = BPAddonConfig.clawCost(); break;
-                case "dagger": baseCost = BPAddonConfig.daggerCost(); break;
-                case "soul_knife": baseCost = BPAddonConfig.soulKnifeCost(); break;
-                case "fist": baseCost = BPAddonConfig.fistCost(); break;
-                default: break;
+                case "hammer":
+                    baseCost = BPAddonConfig.hammerCost();
+                    break;
+                case "anchor":
+                    baseCost = BPAddonConfig.anchorCost();
+                    break;
+                case "claymore":
+                    baseCost = BPAddonConfig.claymoreCost();
+                    break;
+                case "double_axe":
+                    baseCost = BPAddonConfig.doubleAxeCost();
+                    break;
+                case "halberd":
+                    baseCost = BPAddonConfig.halberdCost();
+                    break;
+                case "lance":
+                    baseCost = BPAddonConfig.lanceCost();
+                    break;
+                case "glaive":
+                    baseCost = BPAddonConfig.glaiveCost();
+                    break;
+                case "scythe":
+                    baseCost = BPAddonConfig.scytheCost();
+                    break;
+                case "axe":
+                    baseCost = BPAddonConfig.axeCost();
+                    break;
+                case "mace":
+                    baseCost = BPAddonConfig.maceCost();
+                    break;
+                case "trident":
+                    baseCost = BPAddonConfig.tridentCost();
+                    break;
+                case "spear":
+                    baseCost = BPAddonConfig.spearCost();
+                    break;
+                case "sword":
+                    baseCost = BPAddonConfig.swordCost();
+                    break;
+                case "coral_blade":
+                    baseCost = BPAddonConfig.coralBladeCost();
+                    break;
+                case "cutlass":
+                    baseCost = BPAddonConfig.cutlassCost();
+                    break;
+                case "twin_blade":
+                    baseCost = BPAddonConfig.twinBladeCost();
+                    break;
+                case "battlestaff":
+                    baseCost = BPAddonConfig.battlestaffCost();
+                    break;
+                case "katana":
+                    baseCost = BPAddonConfig.katanaCost();
+                    break;
+                case "rapier":
+                    baseCost = BPAddonConfig.rapierCost();
+                    break;
+                case "wand":
+                    baseCost = BPAddonConfig.wandCost();
+                    break;
+                case "sickle":
+                    baseCost = BPAddonConfig.sickleCost();
+                    break;
+                case "claw":
+                    baseCost = BPAddonConfig.clawCost();
+                    break;
+                case "dagger":
+                    baseCost = BPAddonConfig.daggerCost();
+                    break;
+                case "soul_knife":
+                    baseCost = BPAddonConfig.soulKnifeCost();
+                    break;
+                case "fist":
+                    baseCost = BPAddonConfig.fistCost();
+                    break;
+                default:
+                    break;
             }
 
             totalStaminaConsumption = (baseCost + reachFactor) * ServerConfig.meleeStaminaConsumption();
@@ -110,10 +165,43 @@ public class MixinCalculateStaminaUtils {
             }
 
             // Better Paragliders stamina reduction
-            int calculatedCost = (int) Math.round(finalStaminaCost - player.getAttributeValue(net.cravencraft.betterparagliders.attributes.BetterParaglidersAttributes.RANGE_STAMINA_REDUCTION.get()));
+            int calculatedCost = (int) Math.round(finalStaminaCost - player.getAttributeValue(BetterParaglidersAttributes.RANGE_STAMINA_REDUCTION.get()));
 
             cir.setReturnValue(Math.max(0, calculatedCost));
         }
         // Otherwise, it's a "real" ranged weapon so don't do anything
+    }
+
+    @Inject(method = "calculateBlockStaminaCost", at = @At("RETURN"), remap = false, cancellable = true)
+    private static void onCalculateBlockStaminaCost(Player player, float blockedDamage, CallbackInfoReturnable<Integer> cir) {
+        if (!BPAddonConfig.CAP_BLOCK_STAMINA_COST.get()) {
+            return;
+        }
+
+        try {
+            int bpCost = cir.getReturnValue(); // The amount of stamina Better Paragliders wants to deduct for this block
+            if (bpCost <= 0) {
+                return;
+            }
+
+            Movement movement = Movement.get(player);
+            if (movement instanceof PlayerMovement playerMovement) {
+                int currentStamina = playerMovement.stamina().stamina();
+
+                // We need to calculate the sum from 1 to bpCost to translate from BP to Paragliders
+                int totalCost = (bpCost * (bpCost + 1)) / 2;
+                if (totalCost > currentStamina) {
+                    // If the total cost is greater than the current stamina, we need to cap it
+                    // This is the inverse of the formula used above
+                    int cappedCost = (int) Math.ceil((Math.sqrt(1 + 8 * currentStamina) - 1) / 2) + 1;
+                    if (currentStamina >= playerMovement.stamina().maxStamina()) {
+                        playerMovement.stamina().takeStamina(1, false, false);
+                    }
+                    cir.setReturnValue(cappedCost);
+                }
+            }
+        } catch (Exception e) {
+            BPAddonMain.LOGGER.error("Failed to cap stamina cost for blocked attack:", e);
+        }
     }
 }

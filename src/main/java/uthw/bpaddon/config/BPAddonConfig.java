@@ -9,6 +9,7 @@ public class BPAddonConfig {
     public static final ForgeConfigSpec.BooleanValue ENABLE_WEAPON_OVERRIDE;
     public static final ForgeConfigSpec.BooleanValue PARRIES_COST_ZERO_STAMINA;
     public static final ForgeConfigSpec.IntValue STAMINA_RECOVERY_DELAY;
+    public static final ForgeConfigSpec.BooleanValue CAP_BLOCK_STAMINA_COST;
 
     public static final ForgeConfigSpec.DoubleValue WALL_JUMP_COST;
 
@@ -181,6 +182,11 @@ public class BPAddonConfig {
                 .comment("How long it takes for stamina to begin regenerating after a Better Combat attack, in ticks.",
                         "This value is hardcoded at 10 ticks in base Better Paragliders.")
                 .defineInRange("stamina_recovery_delay", 10, 0, 999);
+
+        CAP_BLOCK_STAMINA_COST = BUILDER
+                .comment("If true, the stamina cost for blocking a single attack is capped at the amount of stamina remaining.",
+                        "Disabling this feature will result in players being out of stamina for a long time after blocking powerful attacks.")
+                .define("cap_block_stamina_cost", true);
 
         BUILDER.pop();
 

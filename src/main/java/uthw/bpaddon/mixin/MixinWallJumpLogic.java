@@ -16,19 +16,23 @@ import uthw.bpaddon.config.BPAddonConfig;
 public class MixinWallJumpLogic {
     /**
      * Prevent the player from doing a wall jump if they have no stamina left
+     *
      * @param pl
      * @param ci
      */
     @Inject(method = "doWallJump", at = @At("HEAD"), remap = false, cancellable = true)
     private static void onDoWallJump(LocalPlayer pl, CallbackInfo ci) {
-        if (pl.isCreative() || pl.isSpectator() || BPAddonConfig.wallJumpCost() <= 0) {
+        int wallJumpCost = (int) BPAddonConfig.wallJumpCost();
+        if (pl.isCreative() || pl.isSpectator() || wallJumpCost <= 0) {
             return;
         }
+
+        int totalCost = (wallJumpCost * (wallJumpCost + 1)) / 2;
 
         try {
             Movement movement = Movement.get(pl);
 
-            if (movement instanceof PlayerMovement playerMovement && playerMovement.stamina().isDepleted()) {
+            if (movement instanceof PlayerMovement playerMovement && (playerMovement.stamina().isDepleted() || playerMovement.stamina().stamina() < totalCost)) {
                 ci.cancel();
             }
         } catch (Exception e) {

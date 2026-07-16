@@ -19,7 +19,6 @@ public class CombatRollIntegration {
 
                 if (movement instanceof PlayerMovement playerMovement) {
                     if (playerMovement.stamina() instanceof StaminaOverride staminaOverride) {
-
                         // Drain stamina on the server side
                         int staminaCost = (int) BPAddonConfig.dodgeRollCost();
                         staminaOverride.setTotalActionStaminaCost(staminaOverride.getTotalActionStaminaCost() + staminaCost);

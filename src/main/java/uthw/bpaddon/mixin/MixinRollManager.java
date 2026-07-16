@@ -18,18 +18,22 @@ import uthw.bpaddon.config.BPAddonConfig;
 public class MixinRollManager {
     /**
      * Prevents the player from rolling if they don't have enough stamina
+     *
      * @param player
      * @param cir
      */
     @Inject(method = "isRollAvailable", at = @At("HEAD"), remap = false, cancellable = true)
     private void onIsRollAvailable(Player player, CallbackInfoReturnable<Boolean> cir) {
-        if (player.isCreative() || player.isSpectator() || BPAddonConfig.dodgeRollCost() <= 0) {
+        int rollCost = (int) BPAddonConfig.dodgeRollCost();
+        if (player.isCreative() || player.isSpectator() || rollCost <= 0) {
             return;
         }
 
+        int totalCost = (rollCost * (rollCost + 1)) / 2;
+
         try {
             Movement movement = Movement.get(player);
-            if (movement instanceof PlayerMovement playerMovement && playerMovement.stamina().isDepleted()) {
+            if (movement instanceof PlayerMovement playerMovement && (playerMovement.stamina().isDepleted() || playerMovement.stamina().stamina() < totalCost)) {
                 cir.setReturnValue(false); // Prevent rolling
             }
         } catch (Exception e) {
@@ -39,6 +43,7 @@ public class MixinRollManager {
 
     /**
      * Visually deducts stamina on the player's stamina wheel when they roll
+     *
      * @param player
      * @param ci
      */
